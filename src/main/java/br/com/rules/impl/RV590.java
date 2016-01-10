@@ -3,6 +3,7 @@ package br.com.rules.impl;
 import br.com.rules.RuleValidation;
 import br.com.rules.enums.Message;
 import br.com.rules.enums.ModeloNFe;
+import br.com.rules.enums.Priority;
 import br.com.rules.model.Identificacao;
 import br.com.rules.model.Produto;
 import br.com.rules.wrapper.Validateable;
@@ -11,7 +12,7 @@ import br.com.rules.wrapper.Validateable;
 public class RV590 extends RuleValidation{
 	
 	public RV590() {
-		super(PRIORITY.LOW, 3.10f, ModeloNFe.MODELO_55, ModeloNFe.MODELO_65);
+		super(Priority.LOW, 3.10f, ModeloNFe.MODELO_55, ModeloNFe.MODELO_65);
 	}
 
 	@Override

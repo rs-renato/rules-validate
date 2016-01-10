@@ -3,6 +3,7 @@ package br.com.rules.impl;
 import br.com.rules.RuleValidation;
 import br.com.rules.enums.Message;
 import br.com.rules.enums.ModeloNFe;
+import br.com.rules.enums.Priority;
 import br.com.rules.excludable.Excludable;
 import br.com.rules.impl.excludable.EXRuleProducao;
 import br.com.rules.model.Identificacao;
@@ -13,7 +14,7 @@ import br.com.rules.wrapper.Validateable;
 public class RV805 extends RuleValidation{
 	
 	public RV805() {
-		super(PRIORITY.HIGH, 3.10f, ModeloNFe.MODELO_55);
+		super(Priority.HIGH, 3.10f, ModeloNFe.MODELO_55);
 	}
 	
 	public enum RV805EX implements Excludable<Validateable>{

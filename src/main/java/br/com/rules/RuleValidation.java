@@ -5,6 +5,7 @@ import java.util.Date;
 import br.com.rules.enums.CampoSequencial;
 import br.com.rules.enums.Message;
 import br.com.rules.enums.ModeloNFe;
+import br.com.rules.enums.Priority;
 import br.com.rules.exceptions.RuleException;
 import br.com.rules.wrapper.Validateable;
 
@@ -18,22 +19,16 @@ public abstract class RuleValidation{
 	private ModeloNFe[] modeloNFe;
 	private float version;
 	
-	private PRIORITY priority;
+	protected Priority priority;
 	
-	protected enum PRIORITY{
-		LOW,
-		MEDIUM,
-		HIGH
-	};
-	
-	public RuleValidation(PRIORITY priority, float version, ModeloNFe ...modeloNFe) {
+	public RuleValidation(Priority priority, float version, ModeloNFe ...modeloNFe) {
 		this.priority = priority;
 		this.version = version;
 		this.modeloNFe = modeloNFe;
 	}
 	
 	public RuleValidation(float version, ModeloNFe ...modeloNFe) {
-		this.priority = PRIORITY.LOW;
+		this.priority = priority.LOW;
 		this.version = version;
 		this.modeloNFe = modeloNFe;
 	}
@@ -71,11 +66,11 @@ public abstract class RuleValidation{
 		this.version = version;
 	}
 
-	public PRIORITY getPriority() {
+	public Priority getPriority() {
 		return priority;
 	}
 
-	public void setPriority(PRIORITY priority) {
+	public void setPriority(Priority priority) {
 		this.priority = priority;
 	}
 	
