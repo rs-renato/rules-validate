@@ -1,0 +1,5 @@
+# INTELIJ IDEA FILES #
+###################
+.idea/*
+rules-validate.iml
+target/*
