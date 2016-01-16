@@ -1,27 +1,29 @@
 package br.com.rules.group;
 
-import java.util.Map;
-import java.util.Set;
-
 import br.com.rules.RuleValidation;
-import br.com.rules.containner.RulesContainner;
-import br.com.rules.enums.ModeloNFe;
+import br.com.rules.containner.GroupContainner;
 import br.com.rules.exceptions.RuleException;
 import br.com.rules.wrapper.Validateable;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class RuleGroup {
-	
-	protected void validateRules(Validateable validateable) throws RuleException {
-		
-		Map<ModeloNFe, Set<RuleValidation>> map = RulesContainner.getInstance().getRules(getClass());
-		
-		Set<RuleValidation> rules = map.get(validateable.getIdentificacao().getModeloNFe());
-		
-		for (RuleValidation rule: rules) {
+
+    private static final AtomicInteger NEXT_ID = new AtomicInteger(0);
+    private final int id = NEXT_ID.getAndIncrement();
+
+    protected void validateRules(Validateable validateable) throws RuleException {
+
+		for (RuleValidation rule: GroupContainner.getInstance().getRules(this,
+                                                                        validateable.getIdentificacao().getModeloNFe(),
+                                                                        validateable.getIdentificacao().getVersao())){
 			rule.validate(validateable);
 		}
 	}
 	
 	public abstract void execute(Validateable validateable) throws RuleException;
-	
+
+    public int getId() {
+        return id;
+    }
 }

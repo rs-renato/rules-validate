@@ -19,9 +19,8 @@ public class EXRuleProducao implements Excludable<Validateable>{
 			DATA_MARCO_PRODUCAO = new SimpleDateFormat("yyyy/MM/dd").parse("2016/01/01");
 		} catch (ParseException e) {}
 	}
-	
 
-	@Override
+    @Override
 	public boolean isRuleObjection(Validateable validateable) {
 		
 		Identificacao identificacao = validateable.getIdentificacao();

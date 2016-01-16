@@ -11,11 +11,10 @@ import br.com.rules.enums.Version;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface RuleConfig {
-	
-	ModeloNFe[] models();
-	
-	Priority priority() default Priority.LOW;
-	
-	Version version() default Version.V3_10;
+public @interface Rule {
+
+    Priority priority() default Priority.HIGH;
+    ModeloNFe modelo() default ModeloNFe.ALL;
+    Version version() default Version.ALL;
+
 }

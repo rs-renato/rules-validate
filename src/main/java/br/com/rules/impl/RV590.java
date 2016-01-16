@@ -1,23 +1,21 @@
 package br.com.rules.impl;
 
 import br.com.rules.RuleValidation;
+import br.com.rules.annotation.Rule;
 import br.com.rules.enums.Message;
 import br.com.rules.enums.ModeloNFe;
-import br.com.rules.enums.Priority;
+import br.com.rules.enums.Version;
+import br.com.rules.group.RuleGroup;
 import br.com.rules.model.Identificacao;
 import br.com.rules.model.Produto;
 import br.com.rules.wrapper.Validateable;
 
-//@RuleConfig(models={ModeloNFe.MODELO_55, ModeloNFe.MODELO_65})
+@Rule(version = Version.V3_10, modelo = ModeloNFe.ALL)
 public class RV590 extends RuleValidation{
-	
-	public RV590() {
-		super(Priority.LOW, 3.10f, ModeloNFe.MODELO_55, ModeloNFe.MODELO_65);
-	}
 
 	@Override
 	public boolean isSatisfied(Validateable validateable) {
-		
+
 		Identificacao identificacao = validateable.getIdentificacao();
 		Produto produto = validateable.getProduto();
 		

@@ -1,17 +1,19 @@
 package br.com.rules.enums;
 
-public enum ModeloNFe {
+public enum ModeloNFe{
 
-	MODELO_55(55),
-	MODELO_65(65);
+	MODELO_55("55"),
+	MODELO_65("65"),
+	ALL("mALL");
+
+	private String codigo;
 	
-	private int codigo;
-	
-	private ModeloNFe(int codigo) {
+	private ModeloNFe(String codigo) {
 		this.codigo = codigo;
 	}
 	
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
+
 }

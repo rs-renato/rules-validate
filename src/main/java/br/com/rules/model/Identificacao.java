@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.rules.enums.ModeloNFe;
+import br.com.rules.enums.Version;
 
 public class Identificacao extends EntidadeNFe {
 
@@ -14,8 +15,9 @@ public class Identificacao extends EntidadeNFe {
 	private boolean tagPag;
 	private char codigoRegimeTributario;
 	private ModeloNFe modeloNfe;
-	
-	public char getIndIEDest() {
+    private Version versao;
+
+    public char getIndIEDest() {
 		return indIeDest;
 	}
 
@@ -70,4 +72,12 @@ public class Identificacao extends EntidadeNFe {
 	public void setModeloNFe(ModeloNFe modeloNfe) {
 		this.modeloNfe = modeloNfe;
 	}
+
+	public void setVersao(Version versao) {
+		this.versao = versao;
+	}
+
+    public Version getVersao() {
+        return this.versao;
+    }
 }

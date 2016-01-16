@@ -1,78 +1,47 @@
 package br.com.rules;
 
-import java.util.Date;
-
-import br.com.rules.enums.CampoSequencial;
+import br.com.rules.annotation.Rule;
 import br.com.rules.enums.Message;
 import br.com.rules.enums.ModeloNFe;
 import br.com.rules.enums.Priority;
+import br.com.rules.enums.Version;
 import br.com.rules.exceptions.RuleException;
+import br.com.rules.group.RuleGroup;
 import br.com.rules.wrapper.Validateable;
+import org.apache.log4j.Logger;
+
+import java.rmi.registry.Registry;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class RuleValidation{
 
-	private Date inicioVigencia;
-	private Date finalVigencia;
-	
-	private CampoSequencial campoSequencial;
-	
-	private ModeloNFe[] modeloNFe;
-	private float version;
-	
-	protected Priority priority;
-	
-	public RuleValidation(Priority priority, float version, ModeloNFe ...modeloNFe) {
-		this.priority = priority;
-		this.version = version;
-		this.modeloNFe = modeloNFe;
-	}
-	
-	public RuleValidation(float version, ModeloNFe ...modeloNFe) {
-		this.priority = priority.LOW;
-		this.version = version;
-		this.modeloNFe = modeloNFe;
-	}
-	
+    private static final Logger logger = Logger.getLogger(RuleValidation.class);
+
+    private static final AtomicInteger NEXT_ID = new AtomicInteger(0);
+    private final int id = NEXT_ID.getAndIncrement();
+
+	public void validate(Validateable validateable) throws RuleException{
+
+		if (isSatisfied(validateable) && !hasObjection(validateable)) {
+
+			throw new RuleException(getMessage());
+		}
+
+        System.out.println("regra validada: " + getClass().getSimpleName());
+    }
 	
 	public abstract Message getMessage();
 	
 	public abstract boolean isSatisfied(Validateable validateable);
 	
 	public abstract boolean hasObjection(Validateable validateable);
-	
-	public void validate(Validateable validateable) throws RuleException{
-		
-		if (isSatisfied(validateable) && !hasObjection(validateable)) {
-			
-			throw new RuleException(getMessage());
-		}
-		
-		System.out.println("Regra valida!!!");
-	}
 
-	public ModeloNFe[] getModeloNFe() {
-		return modeloNFe;
-	}
+    @Override
+    public String toString() {
 
-	public void setModeloNFe(ModeloNFe[] modeloNFe) {
-		this.modeloNFe = modeloNFe;
-	}
+        Rule rule = getClass().getAnnotation(Rule.class);
 
-	public float getVersion() {
-		return version;
-	}
-
-	public void setVersion(float version) {
-		this.version = version;
-	}
-
-	public Priority getPriority() {
-		return priority;
-	}
-
-	public void setPriority(Priority priority) {
-		this.priority = priority;
-	}
-	
-	
+        return this.getClass().getSimpleName() + ":" + rule.modelo().getCodigo() + ":" + rule.version().getVersion();
+    }
 }
