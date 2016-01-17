@@ -2,18 +2,13 @@ package br.com.rules.containner;
 
 import br.com.rules.RuleValidation;
 import br.com.rules.annotation.Group;
-import br.com.rules.annotation.Rule;
 import br.com.rules.enums.ModeloNFe;
 import br.com.rules.enums.Version;
-import br.com.rules.filter.*;
 import br.com.rules.group.RuleGroup;
 import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by renato-rs on 11/01/2016.
@@ -21,12 +16,10 @@ import java.util.Set;
 public class GroupContainner{
 
     private static final Logger logger = Logger.getLogger(GroupContainner.class);
-    private static final Map<RuleGroup, Set<RuleValidation>> rulesMap = new HashMap<RuleGroup, Set<RuleValidation>>();
-    private static final Map<String, Set<RuleValidation>> compositeRules = new HashMap<String, Set<RuleValidation>>();
     private static final GroupContainner groupContainner = new GroupContainner();
 
     private GroupContainner(){
-        indexGroupRules();;
+        indexGroupRules();
     }
 
     public static GroupContainner getInstance(){
@@ -51,41 +44,8 @@ public class GroupContainner{
                     rules.add(rule.newInstance());
                 }
 
-                rulesMap.put(ruleGroup, rules);
-
-                for (RuleValidation ruleValidation : getRules(ruleGroup)) {
-
-                    Rule rule = ruleValidation.getClass().getAnnotation(Rule.class);
-
-                    String key = KeyBuilder.resolve(ruleGroup, rule.modelo(), rule.version());
-
-                    if (!compositeRules.containsKey(key)){
-
-                        Set<RuleValidation> set = getRules(ruleGroup);
-
-                        Filterable<Set<RuleValidation>, ModeloNFe> modelFilter = new ModelFilter(set, rule.modelo());
-                        Filterable<Set<RuleValidation>, Version> versionFilter = new VersionFilter(set, rule.version());
-
-                        compositeRules.put(key, (Set<RuleValidation>) CompositeFilter.filter(modelFilter, versionFilter));
-
-                    }else{
-                        compositeRules.get(key).add(ruleValidation);
-                    }
-
-                }
+                CompositeRulesContainner.buildComposite(ruleGroup, rules);
             }
-
-            Set<Integer> ids = new HashSet<Integer>();
-
-            for (Set<RuleValidation> ruleValidations : compositeRules.values()) {
-
-                for(RuleValidation rule: ruleValidations){
-                    ids.add(System.identityHashCode(rule));
-                }
-            }
-
-            System.out.println(ids);
-
 
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -97,14 +57,14 @@ public class GroupContainner{
     }
 
     public Set<RuleValidation> getRules(RuleGroup ruleGroup){
-        return rulesMap.get(ruleGroup);
+        return CompositeRulesContainner.getRules(ruleGroup);
     }
 
     public Set<RuleValidation> getRules(RuleGroup ruleGroup, ModeloNFe modeloNFe, Version version){
-        return compositeRules.get(KeyBuilder.resolve(ruleGroup, modeloNFe, version));
+        return CompositeRulesContainner.getRules(ruleGroup, modeloNFe, version);
     }
 
     public Set<RuleGroup> getGroups(){
-        return rulesMap.keySet();
+        return CompositeRulesContainner.getGroups();
     }
 }

@@ -13,7 +13,7 @@ import br.com.rules.model.Identificacao;
 import br.com.rules.model.constants.INDI_IE_DEST;
 import br.com.rules.wrapper.Validateable;
 
-@Rule(priority = Priority.HIGH, version = Version.ALL, modelo = ModeloNFe.ALL)
+@Rule(priority = Priority.HIGH, version = Version.ALL, modelo = ModeloNFe.MODELO_55)
 public class RV805 extends RuleValidation{
 	
 	public enum RV805EX implements Excludable<Validateable>{

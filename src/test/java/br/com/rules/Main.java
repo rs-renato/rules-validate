@@ -47,7 +47,7 @@ public class Main {
         identificacao.setTipoAmbiente(1);
         identificacao.setProdutos(Arrays.asList(produto));
         identificacao.setCodigoRegimeTributario('2');
-        identificacao.setModeloNFe(ModeloNFe.MODELO_55);
+        identificacao.setModeloNFe(ModeloNFe.ALL);
         identificacao.setVersao(Version.V3_10);
 
         return identificacao;

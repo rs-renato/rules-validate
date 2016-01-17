@@ -12,4 +12,12 @@ public class KeyBuilder {
     public static String resolve(RuleGroup ruleGroup, ModeloNFe modeloNFe, Version version) {
         return ruleGroup.getClass().getSimpleName() + "|" +  modeloNFe.getCodigo() + "|" + version.getVersion();
     }
+
+    public static String resolve(RuleGroup ruleGroup, ModeloNFe modeloNFe) {
+        return ruleGroup.getClass().getSimpleName() + "|" +  modeloNFe.getCodigo();
+    }
+
+    public static String resolve(RuleGroup ruleGroup,Version version) {
+        return ruleGroup.getClass().getSimpleName() + "|" + version.getVersion();
+    }
 }

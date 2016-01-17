@@ -10,7 +10,7 @@ import br.com.rules.model.Identificacao;
 import br.com.rules.model.Produto;
 import br.com.rules.wrapper.Validateable;
 
-@Rule(version = Version.V3_10, modelo = ModeloNFe.ALL)
+@Rule(version = Version.V2_10, modelo = ModeloNFe.MODELO_65)
 public class RV590 extends RuleValidation{
 
 	@Override
