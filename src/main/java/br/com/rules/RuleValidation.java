@@ -1,18 +1,12 @@
 package br.com.rules;
 
-import br.com.rules.annotation.Rule;
-import br.com.rules.enums.Message;
-import br.com.rules.enums.ModeloNFe;
-import br.com.rules.enums.Priority;
-import br.com.rules.enums.Version;
-import br.com.rules.exceptions.RuleException;
-import br.com.rules.group.RuleGroup;
-import br.com.rules.wrapper.Validateable;
+import br.com.annotation.Rule;
+import br.com.enums.Message;
+import br.com.exceptions.RuleException;
+import br.com.wrapper.Validateable;
 import org.apache.log4j.Logger;
 
-import java.rmi.registry.Registry;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class RuleValidation{
 
@@ -21,7 +15,7 @@ public abstract class RuleValidation{
     private static final AtomicInteger NEXT_ID = new AtomicInteger(0);
     private final int id = NEXT_ID.getAndIncrement();
 
-	public void validate(Validateable validateable) throws RuleException{
+	public void validate(Validateable validateable) throws RuleException {
 
 		if (isSatisfied(validateable) && !hasObjection(validateable)) {
 
