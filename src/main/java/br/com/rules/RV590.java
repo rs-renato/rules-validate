@@ -8,7 +8,7 @@ import br.com.enums.ModeloNFe;
 import br.com.model.Produto;
 import br.com.wrapper.Validateable;
 
-@Rule(version = Version.V2_10, modelo = ModeloNFe.ALL)
+@Rule(version = Version.V3_10, modelo = ModeloNFe.ALL)
 public class RV590 extends RuleValidation{
 
 	@Override

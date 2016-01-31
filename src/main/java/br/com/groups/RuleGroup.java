@@ -1,8 +1,9 @@
 package br.com.groups;
 
+import br.com.containner.GroupContainner;
 import br.com.exceptions.RuleException;
+import br.com.model.Identificacao;
 import br.com.rules.RuleValidation;
-import br.com.containner.CompositeContainner;
 import br.com.wrapper.Validateable;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,20 +11,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class RuleGroup {
 
     private static final AtomicInteger NEXT_ID = new AtomicInteger(0);
-    private final int id = NEXT_ID.getAndIncrement();
+    private final Integer id = NEXT_ID.getAndIncrement();
 
     protected void validateRules(Validateable validateable) throws RuleException {
 
-		for (RuleValidation rule: CompositeContainner.getInstance().getRules(this,
-                                                                        validateable.getIdentificacao().getModeloNFe(),
-                                                                        validateable.getIdentificacao().getVersao())){
+        GroupContainner groupContainner = GroupContainner.getInstance();
+        Identificacao identificacao = validateable.getIdentificacao();
+
+		for (RuleValidation rule: groupContainner.getRules(this, identificacao.getModeloNFe(), identificacao.getVersao())){
 			rule.validate(validateable);
 		}
 	}
 	
 	public abstract void execute(Validateable validateable) throws RuleException;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 }

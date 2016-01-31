@@ -22,7 +22,7 @@ public abstract class RuleValidation{
 			throw new RuleException(getMessage());
 		}
 
-        System.out.println("regra validada: " + getClass().getSimpleName());
+//        System.out.println("regra validada: " + getClass().getSimpleName());
     }
 	
 	public abstract Message getMessage();

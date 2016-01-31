@@ -1,12 +1,12 @@
 package br.com;
 
-import br.com.containner.CompositeContainner;
+import br.com.containner.GroupContainner;
+import br.com.enums.ModeloNFe;
 import br.com.enums.Version;
 import br.com.exceptions.RuleException;
 import br.com.groups.RuleGroup;
 import br.com.model.Identificacao;
 import br.com.model.Produto;
-import br.com.enums.ModeloNFe;
 import br.com.wrapper.IdentificacaoWrapper;
 import br.com.wrapper.Validateable;
 
@@ -19,20 +19,19 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-      /*  for (int i = 0; i <= 500; i++) {
+        for (int i = 0; i <= 2; i++) {
             new Runner().start();
-        }*/
+        }
 
-        execute(getIdentificacao());
+//        execute(getIdentificacao());
     }
 
     static void execute(Identificacao identificacao) throws RuleException {
 
-        for (RuleGroup group : CompositeContainner.getInstance().getGroups()) {
+        for (RuleGroup group : GroupContainner.getInstance().getGroups()) {
             Validateable validateable = new IdentificacaoWrapper(identificacao);
             group.execute(validateable);
         }
-
     }
 
     static Identificacao getIdentificacao() throws ParseException {
@@ -47,7 +46,7 @@ public class Main {
         identificacao.setTipoAmbiente(1);
         identificacao.setProdutos(Arrays.asList(produto));
         identificacao.setCodigoRegimeTributario('2');
-        identificacao.setModeloNFe(ModeloNFe.MODELO_55);
+        identificacao.setModeloNFe(ModeloNFe.MODELO_65);
         identificacao.setVersao(Version.V3_10);
 
         return identificacao;
@@ -62,7 +61,7 @@ class Runner extends Thread {
 
         try {
 
-            Thread.sleep(10 * 1000);
+            Thread.sleep(1 * 1000);
 
             Identificacao identificacao = Main.getIdentificacao();
 
