@@ -1,10 +1,10 @@
 package br.com;
 
-import br.com.containner.GroupContainner;
-import br.com.enums.ModeloNFe;
+import br.com.containner.GroupContainer;
+import br.com.enums.Model;
 import br.com.enums.Version;
-import br.com.exceptions.RuleException;
-import br.com.groups.RuleGroup;
+import br.com.exceptions.ValidateException;
+import br.com.groups.GroupRules;
 import br.com.model.Identificacao;
 import br.com.model.Produto;
 import br.com.wrapper.IdentificacaoWrapper;
@@ -19,16 +19,16 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        for (int i = 0; i <= 2; i++) {
+      /*  for (int i = 0; i <= 2; i++) {
             new Runner().start();
-        }
+        }*/
 
-//        execute(getIdentificacao());
+        execute(getIdentificacao());
     }
 
-    static void execute(Identificacao identificacao) throws RuleException {
+    static void execute(Identificacao identificacao) throws ValidateException {
 
-        for (RuleGroup group : GroupContainner.getInstance().getGroups()) {
+        for (GroupRules group : GroupContainer.getInstance().getGroups()) {
             Validateable validateable = new IdentificacaoWrapper(identificacao);
             group.execute(validateable);
         }
@@ -46,7 +46,7 @@ public class Main {
         identificacao.setTipoAmbiente(1);
         identificacao.setProdutos(Arrays.asList(produto));
         identificacao.setCodigoRegimeTributario('2');
-        identificacao.setModeloNFe(ModeloNFe.MODELO_65);
+        identificacao.setModeloNFe(Model.MODELO_65);
         identificacao.setVersao(Version.V3_10);
 
         return identificacao;
@@ -74,7 +74,7 @@ class Runner extends Thread {
                     Main.execute(identificacao);
 //                    Thread.sleep(1 * 1000);
 
-                } catch (RuleException e) {
+                } catch (ValidateException e) {
                     System.out.println(e.getMensagemNFe());
                 }
 

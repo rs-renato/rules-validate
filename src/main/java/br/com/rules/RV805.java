@@ -1,17 +1,17 @@
 package br.com.rules;
 
 import br.com.annotation.Rule;
-import br.com.enums.*;
-import br.com.model.Identificacao;
-import br.com.model.constants.INDI_IE_DEST;
-import br.com.enums.Message;
+import br.com.enums.Model;
 import br.com.enums.Priority;
+import br.com.enums.ValidationMessages;
 import br.com.enums.Version;
 import br.com.excludable.Excludable;
+import br.com.model.Identificacao;
+import br.com.model.constants.INDI_IE_DEST;
 import br.com.rules.excludable.EXRuleProducao;
 import br.com.wrapper.Validateable;
 
-@Rule(priority = Priority.HIGH, version = Version.V3_10, modelo = ModeloNFe.MODELO_55)
+@Rule(priority = Priority.HIGH, version = Version.V3_10, modelo = Model.MODELO_55)
 public class RV805 extends RuleValidation{
 	
 	private static enum RV805EX implements Excludable<Validateable>{
@@ -69,7 +69,7 @@ public class RV805 extends RuleValidation{
 	}
 	
 	@Override
-	public Message getMessage() {
-		return Message.REJECT_805;
+	public ValidationMessages getValidationMessage() {
+		return ValidationMessages.REJECT_805;
 	}
 }

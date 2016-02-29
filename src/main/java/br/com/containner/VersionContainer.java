@@ -1,6 +1,6 @@
 package br.com.containner;
 
-import br.com.enums.ModeloNFe;
+import br.com.enums.Model;
 import br.com.enums.Version;
 import br.com.rules.RuleValidation;
 
@@ -10,14 +10,15 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by renato-rs on 28/01/2016.
+ * A container of version represented by {@link Version}
  */
-class VersionContainner implements IContainner<Version> {
+class VersionContainer implements IContainer<Version> {
 
     private Map<Version, Set<RuleValidation>> rules = new HashMap<Version, Set<RuleValidation>>();
 
-    public VersionContainner() {
+    public VersionContainer() {
 
+        //initialize all version's set
         for (Version version : Version.values()){
             if (version.equals(Version.ALL)) continue;
             rules.put(version, new HashSet<RuleValidation>());
@@ -31,9 +32,10 @@ class VersionContainner implements IContainner<Version> {
 
             case ALL:{
 
-                for (ModeloNFe modeloNFe : ModeloNFe.values()){
-                    if (modeloNFe.equals(ModeloNFe.ALL)) continue;
-                    rules.get(modeloNFe).add(ruleValidation);
+                //adds the rule to all versions
+                for (Model model : Model.values()){
+                    if (model.equals(Model.ALL)) continue;
+                    rules.get(model).add(ruleValidation);
                 }
 
                 break;

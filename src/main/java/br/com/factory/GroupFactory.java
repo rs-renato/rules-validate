@@ -1,6 +1,6 @@
 package br.com.factory;
 
-import br.com.groups.RuleGroup;
+import br.com.groups.GroupRules;
 import org.apache.log4j.Logger;
 
 import java.util.Collection;
@@ -9,12 +9,12 @@ import java.util.Map;
 
 
 /**
- * Created by renato-rs on 18/01/2016.
+ * A factory of {@link GroupRules} types
  */
 public class GroupFactory {
 
     private final Logger logger = Logger.getLogger(GroupFactory.class);
-    private static final Map<Class<? extends RuleGroup>, RuleGroup> rulesGroup = new HashMap<Class<? extends RuleGroup>, RuleGroup>();
+    private static final Map<Class<? extends GroupRules>, GroupRules> rulesGroup = new HashMap<Class<? extends GroupRules>, GroupRules>();
     private static  GroupFactory groupFactory = new GroupFactory();
 
     private GroupFactory() {
@@ -25,21 +25,30 @@ public class GroupFactory {
         return  groupFactory;
     }
 
-    public RuleGroup getGroup(Class<? extends RuleGroup> ruleGroup){
+    /**
+     * Retrieves a {@link GroupRules} instance from a specific class
+     * @param ruleGroup group class to build and retrieve an instance;
+     * @return a unique {@link GroupRules} instance
+     */
+    public GroupRules getGroup(Class<? extends GroupRules> ruleGroup){
 
         if (!rulesGroup.containsKey(ruleGroup)){
 
             try {
                 rulesGroup.put(ruleGroup, ruleGroup.newInstance());
             } catch (Exception e) {
-                e.printStackTrace();
+               logger.error(e);
             }
         }
 
         return rulesGroup.get(ruleGroup);
     }
 
-    public Collection<RuleGroup> getGroups(){
+    /**
+     * Retrieves all {@link GroupRules} instances
+     * @return a collection of group rules instances
+     */
+    public Collection<GroupRules> getGroups(){
         return rulesGroup.values();
     }
 }

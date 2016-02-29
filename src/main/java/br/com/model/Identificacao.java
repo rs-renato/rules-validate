@@ -1,10 +1,10 @@
 package br.com.model;
 
+import br.com.enums.Model;
+import br.com.enums.Version;
+
 import java.util.Date;
 import java.util.List;
-
-import br.com.enums.ModeloNFe;
-import br.com.enums.Version;
 
 public class Identificacao extends EntidadeNFe {
 
@@ -14,7 +14,7 @@ public class Identificacao extends EntidadeNFe {
 	private List<Produto> produtos;
 	private boolean tagPag;
 	private char codigoRegimeTributario;
-	private ModeloNFe modeloNfe;
+	private Model modeloNfe;
     private Version versao;
 
     public char getIndIEDest() {
@@ -65,11 +65,11 @@ public class Identificacao extends EntidadeNFe {
 		this.codigoRegimeTributario = codigoRegimeTributario;
 	}
 	
-	public ModeloNFe getModeloNFe() {
+	public Model getModeloNFe() {
 		return modeloNfe;
 	}
 	
-	public void setModeloNFe(ModeloNFe modeloNfe) {
+	public void setModeloNFe(Model modeloNfe) {
 		this.modeloNfe = modeloNfe;
 	}
 

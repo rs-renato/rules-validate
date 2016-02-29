@@ -1,14 +1,14 @@
 package br.com.rules;
 
 import br.com.annotation.Rule;
+import br.com.enums.Model;
+import br.com.enums.ValidationMessages;
 import br.com.enums.Version;
 import br.com.model.Identificacao;
-import br.com.enums.Message;
-import br.com.enums.ModeloNFe;
 import br.com.model.Produto;
 import br.com.wrapper.Validateable;
 
-@Rule(version = Version.V3_10, modelo = ModeloNFe.ALL)
+@Rule(version = Version.V3_10, modelo = Model.ALL)
 public class RV590 extends RuleValidation{
 
 	@Override
@@ -26,8 +26,8 @@ public class RV590 extends RuleValidation{
 	}
 
 	@Override
-	public Message getMessage() {
-		return Message.REJECT_590;
+	public ValidationMessages getValidationMessage() {
+		return ValidationMessages.REJECT_590;
 	}
 
 }

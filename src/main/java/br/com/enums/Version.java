@@ -1,10 +1,7 @@
 package br.com.enums;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by renatorodrigues on 10/01/16.
+ * Defines all versions used in {@link br.com.annotation.Rule}
  */
 public enum Version{
 

@@ -1,16 +1,17 @@
 package br.com.groups;
 
-import br.com.exceptions.RuleException;
-import br.com.rules.RV590;
 import br.com.annotation.Group;
+import br.com.enums.Priority;
+import br.com.exceptions.ValidateException;
+import br.com.rules.RV590;
 import br.com.rules.RV805;
 import br.com.wrapper.Validateable;
 
-@Group(rules={RV590.class, RV805.class})
-public class GrupoIdentificacao extends RuleGroup {
+@Group(rules={RV590.class, RV805.class}, priority = Priority.HIGH)
+public class GrupoIdentificacao extends GroupRules {
 
 	@Override
-	public void execute(Validateable validateable) throws RuleException {
+	public void execute(Validateable validateable) throws ValidateException {
 		validateRules(validateable);
 	}
 }

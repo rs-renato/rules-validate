@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by renato-rs on 18/01/2016.
+ * A factory of {@link RuleValidation} types
  */
 public class RulesFactory {
 
@@ -25,6 +25,11 @@ public class RulesFactory {
         return rulesFactory;
     }
 
+    /**
+     * Retrieves a {@link RuleValidation} instance from a specific class
+     * @param ruleValidation group class to build and retrieve an instance;
+     * @return a unique {@link RuleValidation} instance
+     */
     public RuleValidation getRule(Class<? extends RuleValidation> ruleValidation){
 
         if (!rulesMap.containsKey(ruleValidation)){
@@ -32,13 +37,17 @@ public class RulesFactory {
             try {
                 rulesMap.put(ruleValidation, ruleValidation.newInstance());
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.error(e);
             }
         }
 
         return rulesMap.get(ruleValidation);
     }
 
+    /**
+     * Retrieves all {@link RuleValidation} instances
+     * @return a collection of rule validation instances
+     */
     public Collection<RuleValidation> getRules(){
         return rulesMap.values();
     }

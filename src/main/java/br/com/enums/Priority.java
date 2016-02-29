@@ -1,7 +1,7 @@
 package br.com.enums;
 
 /**
- * Created by renatorodrigues on 10/01/16.
+ * Defines all priorities used in {@link br.com.annotation.Rule} and {@link br.com.annotation.Group}
  */
 public enum Priority {
     LOW,

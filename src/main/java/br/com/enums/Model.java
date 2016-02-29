@@ -1,6 +1,9 @@
 package br.com.enums;
 
-public enum ModeloNFe{
+/**
+ * Defines all models used in {@link br.com.annotation.Rule}
+ */
+public enum Model {
 
 	MODELO_55("55"),
 	MODELO_65("65"),
@@ -8,7 +11,7 @@ public enum ModeloNFe{
 
 	private String codigo;
 	
-	private ModeloNFe(String codigo) {
+	Model(String codigo) {
 		this.codigo = codigo;
 	}
 	
