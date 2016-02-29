@@ -24,7 +24,7 @@ public class EXRuleProducao implements Excludable<Validateable>{
     @Override
 	public boolean isRuleObjection(Validateable validateable) {
 
-        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable.getWrapper();
+        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable;
 
 		Identificacao identificacao = wrapper.getIdentificacao();
 

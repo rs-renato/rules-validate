@@ -23,7 +23,7 @@ public class GroupContainer implements IContainer<GroupRules> {
     private static final GroupContainer GROUP_CONTAINER = new GroupContainer();
     private Logger logger = Logger.getLogger(GroupContainer.class);
 
-    private static final String GROUP_PACKAGE = "br.com.usage.group"; //FIXME change package convention
+    private static final String GROUP_PACKAGE = "br.com.usage.group"; //FIXME change package convention; load from property
 
     private GroupContainer() {
         init();
@@ -84,7 +84,7 @@ public class GroupContainer implements IContainer<GroupRules> {
      * considering a specific  {@link Model} <b>AND</b> {@link Version} of the rules validation
      * contained in this group rule. This means that will return only rules in that model and version.
      * @param groupRules the rule's owner
-     * @param validateable //FIXME update documentation
+     * @param validateable a validation type to be evaluated
      * @return a set of rules validations of this specific model <b>AND</b> version
      */
     public Set<RuleValidation> getRules(GroupRules groupRules, Validateable validateable) {

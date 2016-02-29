@@ -2,8 +2,6 @@ package br.com.usage.model;
 
 import br.com.enums.Model;
 import br.com.enums.Version;
-import br.com.usage.model.Identificacao;
-import br.com.usage.model.Produto;
 import br.com.wrapper.Validateable;
 
 public class IdentificacaoWrapper implements Validateable {
@@ -42,8 +40,4 @@ public class IdentificacaoWrapper implements Validateable {
         return identificacao.getVersao();
     }
 
-    @Override
-    public Object getWrapper() {
-        return this;
-    }
 }

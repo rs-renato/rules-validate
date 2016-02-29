@@ -3,10 +3,11 @@ package br.com.usage.rules;
 import br.com.annotation.Rule;
 import br.com.enums.Model;
 import br.com.enums.Priority;
-import br.com.enums.ValidationMessages;
+import br.com.enums.ValidateableMessages;
 import br.com.enums.Version;
 import br.com.excludable.Excludable;
 import br.com.rules.RuleValidation;
+import br.com.usage.message.Messages;
 import br.com.usage.model.Identificacao;
 import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.constants.INDI_IE_DEST;
@@ -16,7 +17,7 @@ import br.com.wrapper.Validateable;
 @Rule(priority = Priority.HIGH, version = Version.V3_10, modelo = Model.MODELO_55)
 public class RV805 extends RuleValidation {
 	
-	private static enum RV805EX implements Excludable<Validateable>{
+	private enum RV805EX implements Excludable<Validateable>{
 		
 		EXCEPTION_01{
 			@Override
@@ -53,7 +54,7 @@ public class RV805 extends RuleValidation {
 	@Override
 	public boolean isSatisfied(Validateable validateable) {
 
-        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable.getWrapper();
+        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable;
 		
 		Identificacao identificacao = wrapper.getIdentificacao();
 		
@@ -73,7 +74,7 @@ public class RV805 extends RuleValidation {
 	}
 	
 	@Override
-	public ValidationMessages getValidationMessage() {
-		return ValidationMessages.REJECT_805;
+	public ValidateableMessages getValidationMessage() {
+		return Messages.REJECT_805;
 	}
 }

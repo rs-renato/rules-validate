@@ -1,6 +1,6 @@
 package br.com.usage.model;
 
-public class Produto extends EntidadeNFe{
+public class Produto {
 
 	private String cst;
 	

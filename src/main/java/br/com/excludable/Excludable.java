@@ -9,7 +9,7 @@ public interface Excludable<T>{
     /**
      * Check if has any objection to type {@link T}
      * @param t type
-     * @return true if has objection on type
+     * @return true if objection is satisfied on type
      */
 	boolean isRuleObjection(T t);
 }

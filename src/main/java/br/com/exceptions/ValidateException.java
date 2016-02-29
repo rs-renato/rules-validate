@@ -1,6 +1,6 @@
 package br.com.exceptions;
 
-import br.com.enums.ValidationMessages;
+import br.com.enums.ValidateableMessages;
 
 /**
  * Exception used to represent validation troubles
@@ -9,13 +9,13 @@ public class ValidateException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 	
-	private ValidationMessages mensagemNFe;
+	private ValidateableMessages mensagemNFe;
 	
-	public ValidateException(ValidationMessages mensagenNfe) {
+	public ValidateException(ValidateableMessages mensagenNfe) {
 		this.mensagemNFe = mensagenNfe;
 	}
 	
-	public ValidationMessages getMensagemNFe() {
+	public ValidateableMessages getMensagemNFe() {
 		return mensagemNFe;
 	}
 }

@@ -6,7 +6,7 @@ import br.com.enums.Version;
 import java.util.Date;
 import java.util.List;
 
-public class Identificacao extends EntidadeNFe {
+public class Identificacao {
 
 	private char indIeDest;
 	private int tipoAmbiente;

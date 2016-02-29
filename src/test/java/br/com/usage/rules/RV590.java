@@ -2,9 +2,10 @@ package br.com.usage.rules;
 
 import br.com.annotation.Rule;
 import br.com.enums.Model;
-import br.com.enums.ValidationMessages;
+import br.com.enums.ValidateableMessages;
 import br.com.enums.Version;
 import br.com.rules.RuleValidation;
+import br.com.usage.message.Messages;
 import br.com.usage.model.Identificacao;
 import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.Produto;
@@ -16,7 +17,7 @@ public class RV590 extends RuleValidation {
 	@Override
 	public boolean isSatisfied(Validateable validateable) {
 
-        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable.getWrapper();
+        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable;
 
         Identificacao identificacao = wrapper.getIdentificacao();
 		Produto produto = wrapper.getProduto();
@@ -30,8 +31,8 @@ public class RV590 extends RuleValidation {
 	}
 
 	@Override
-	public ValidationMessages getValidationMessage() {
-		return ValidationMessages.REJECT_590;
+	public ValidateableMessages getValidationMessage() {
+		return Messages.REJECT_590;
 	}
 
 }

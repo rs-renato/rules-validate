@@ -1,20 +1,24 @@
 package br.com.rules;
 
-import br.com.annotation.Rule;
-import br.com.enums.ValidationMessages;
+import br.com.enums.ValidateableMessages;
 import br.com.exceptions.ValidateException;
 import br.com.wrapper.Validateable;
 import org.apache.log4j.Logger;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
+/**
+ * Abstraction class to rules validation
+ */
 public abstract class RuleValidation{
 
     private static final Logger logger = Logger.getLogger(RuleValidation.class);
 
-    private static final AtomicInteger NEXT_ID = new AtomicInteger(0);
-    private final int id = NEXT_ID.getAndIncrement();
-
+    /**
+     * Validate this rules, considering rules to be <i>satisfied</i> and <i>avoided</i>,
+     * if there is any validation's objection. So, this rules is valid if is satisfied <b>AND</b>
+     * there are no objection to the rule
+     * @param validateable a validation type to be evaluated
+     * @throws ValidateException throws validation expeception if any rule wasn't satisfied
+     */
 	public void validate(Validateable validateable) throws ValidateException {
 
 		if (isSatisfied(validateable) && !hasObjection(validateable)) {
@@ -24,18 +28,34 @@ public abstract class RuleValidation{
 
         logger.info("Validated: " + getClass().getName());
     }
-	
-	public abstract ValidationMessages getValidationMessage();
-	
+
+    /**
+     * Retrieves the validation message to the rule
+     * @return {@link ValidateableMessages} from this rule
+     */
+	public abstract ValidateableMessages getValidationMessage();
+
+    /**
+     * Checks all validation from this rule to be satisfied
+     * @param validateable a validation type to be evaluated
+     * @return true if the rule is satisfied
+     */
 	public abstract boolean isSatisfied(Validateable validateable);
-	
+
+
+    /**
+     * Checks all validation from this rule to be objected
+     * @param validateable a validation type to be evaluated
+     * @return true if the rule has any objection
+     */
 	public abstract boolean hasObjection(Validateable validateable);
 
-    @Override
+
+    /*@Override
     public String toString() {
 
         Rule rule = getClass().getAnnotation(Rule.class);
 
         return this.getClass().getSimpleName() + ":" + rule.modelo().getCodigo() + ":" + rule.version().getVersion();
-    }
+    }*/
 }
