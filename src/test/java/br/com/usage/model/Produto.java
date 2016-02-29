@@ -1,4 +1,4 @@
-package br.com.model;
+package br.com.usage.model;
 
 public class Produto extends EntidadeNFe{
 

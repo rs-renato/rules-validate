@@ -2,7 +2,6 @@ package br.com.groups;
 
 import br.com.containner.GroupContainer;
 import br.com.exceptions.ValidateException;
-import br.com.model.Identificacao;
 import br.com.rules.RuleValidation;
 import br.com.wrapper.Validateable;
 
@@ -16,9 +15,8 @@ public abstract class GroupRules {
     protected void validateRules(Validateable validateable) throws ValidateException {
 
         GroupContainer groupContainer = GroupContainer.getInstance();
-        Identificacao identificacao = validateable.getIdentificacao();
 
-		for (RuleValidation rule: groupContainer.getRules(this, identificacao.getModeloNFe(), identificacao.getVersao())){
+		for (RuleValidation rule: groupContainer.getRules(this, validateable)){
 			rule.validate(validateable);
 		}
 	}

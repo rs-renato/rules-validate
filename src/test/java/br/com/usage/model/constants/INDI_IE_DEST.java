@@ -1,4 +1,4 @@
-package br.com.model.constants;
+package br.com.usage.model.constants;
 
 public enum INDI_IE_DEST{
 	

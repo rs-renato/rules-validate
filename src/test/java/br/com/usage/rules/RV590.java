@@ -1,21 +1,25 @@
-package br.com.rules;
+package br.com.usage.rules;
 
 import br.com.annotation.Rule;
 import br.com.enums.Model;
 import br.com.enums.ValidationMessages;
 import br.com.enums.Version;
-import br.com.model.Identificacao;
-import br.com.model.Produto;
+import br.com.rules.RuleValidation;
+import br.com.usage.model.Identificacao;
+import br.com.usage.model.IdentificacaoWrapper;
+import br.com.usage.model.Produto;
 import br.com.wrapper.Validateable;
 
 @Rule(version = Version.V3_10, modelo = Model.ALL)
-public class RV590 extends RuleValidation{
+public class RV590 extends RuleValidation {
 
 	@Override
 	public boolean isSatisfied(Validateable validateable) {
 
-		Identificacao identificacao = validateable.getIdentificacao();
-		Produto produto = validateable.getProduto();
+        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable.getWrapper();
+
+        Identificacao identificacao = wrapper.getIdentificacao();
+		Produto produto = wrapper.getProduto();
 		
 		return identificacao.getCodigoRegimeTributario() == '1' && produto.getCst() != null;
 	}

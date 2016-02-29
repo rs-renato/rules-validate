@@ -7,6 +7,7 @@ import br.com.factory.GroupFactory;
 import br.com.factory.RulesFactory;
 import br.com.groups.GroupRules;
 import br.com.rules.RuleValidation;
+import br.com.wrapper.Validateable;
 import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 
@@ -22,7 +23,7 @@ public class GroupContainer implements IContainer<GroupRules> {
     private static final GroupContainer GROUP_CONTAINER = new GroupContainer();
     private Logger logger = Logger.getLogger(GroupContainer.class);
 
-    private static final String GROUP_PACKAGE = "br.com.groups";
+    private static final String GROUP_PACKAGE = "br.com.usage.group"; //FIXME change package convention
 
     private GroupContainer() {
         init();
@@ -83,12 +84,11 @@ public class GroupContainer implements IContainer<GroupRules> {
      * considering a specific  {@link Model} <b>AND</b> {@link Version} of the rules validation
      * contained in this group rule. This means that will return only rules in that model and version.
      * @param groupRules the rule's owner
-     * @param model the model to be filtered
-     * @param version the version to be filtered
+     * @param validateable //FIXME update documentation
      * @return a set of rules validations of this specific model <b>AND</b> version
      */
-    public Set<RuleValidation> getRules(GroupRules groupRules, Model model, Version version) {
-        return groups.get(groupRules).getRules(model, version);
+    public Set<RuleValidation> getRules(GroupRules groupRules, Validateable validateable) {
+        return groups.get(groupRules).getRules(validateable.getModel(), validateable.getVersion());
     }
 
     /**

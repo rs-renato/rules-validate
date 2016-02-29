@@ -1,4 +1,4 @@
-package br.com.rules;
+package br.com.usage.rules;
 
 import br.com.annotation.Rule;
 import br.com.enums.Model;
@@ -6,13 +6,15 @@ import br.com.enums.Priority;
 import br.com.enums.ValidationMessages;
 import br.com.enums.Version;
 import br.com.excludable.Excludable;
-import br.com.model.Identificacao;
-import br.com.model.constants.INDI_IE_DEST;
-import br.com.rules.excludable.EXRuleProducao;
+import br.com.rules.RuleValidation;
+import br.com.usage.model.Identificacao;
+import br.com.usage.model.IdentificacaoWrapper;
+import br.com.usage.model.constants.INDI_IE_DEST;
+import br.com.usage.rules.excludable.EXRuleProducao;
 import br.com.wrapper.Validateable;
 
 @Rule(priority = Priority.HIGH, version = Version.V3_10, modelo = Model.MODELO_55)
-public class RV805 extends RuleValidation{
+public class RV805 extends RuleValidation {
 	
 	private static enum RV805EX implements Excludable<Validateable>{
 		
@@ -50,8 +52,10 @@ public class RV805 extends RuleValidation{
 	
 	@Override
 	public boolean isSatisfied(Validateable validateable) {
+
+        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable.getWrapper();
 		
-		Identificacao identificacao = validateable.getIdentificacao();
+		Identificacao identificacao = wrapper.getIdentificacao();
 		
 		return identificacao.getIndIEDest() == INDI_IE_DEST.CONTRIB_ISENTO_ICMS.getCodigo();
 	}

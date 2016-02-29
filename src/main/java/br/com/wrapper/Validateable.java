@@ -1,11 +1,12 @@
 package br.com.wrapper;
 
-import br.com.model.Identificacao;
-import br.com.model.Produto;
+import br.com.enums.Model;
+import br.com.enums.Version;
 
 public interface Validateable{
 
-	Produto getProduto();
-	Identificacao getIdentificacao();
+    Model getModel();
+    Version getVersion();
 
+    Object getWrapper();
 }

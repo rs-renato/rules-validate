@@ -1,10 +1,11 @@
-package br.com.groups;
+package br.com.usage.group;
 
 import br.com.annotation.Group;
 import br.com.enums.Priority;
 import br.com.exceptions.ValidateException;
-import br.com.rules.RV590;
-import br.com.rules.RV805;
+import br.com.groups.GroupRules;
+import br.com.usage.rules.RV590;
+import br.com.usage.rules.RV805;
 import br.com.wrapper.Validateable;
 
 @Group(rules={RV590.class, RV805.class}, priority = Priority.HIGH)

@@ -5,9 +5,9 @@ import br.com.enums.Model;
 import br.com.enums.Version;
 import br.com.exceptions.ValidateException;
 import br.com.groups.GroupRules;
-import br.com.model.Identificacao;
-import br.com.model.Produto;
-import br.com.wrapper.IdentificacaoWrapper;
+import br.com.usage.model.Identificacao;
+import br.com.usage.model.Produto;
+import br.com.usage.model.IdentificacaoWrapper;
 import br.com.wrapper.Validateable;
 
 import java.text.ParseException;

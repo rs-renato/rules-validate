@@ -1,8 +1,9 @@
-package br.com.rules.excludable;
+package br.com.usage.rules.excludable;
 
 import br.com.excludable.Excludable;
-import br.com.model.Identificacao;
-import br.com.model.constants.AMBIENTE;
+import br.com.usage.model.Identificacao;
+import br.com.usage.model.IdentificacaoWrapper;
+import br.com.usage.model.constants.AMBIENTE;
 import br.com.wrapper.Validateable;
 
 import java.text.ParseException;
@@ -22,9 +23,11 @@ public class EXRuleProducao implements Excludable<Validateable>{
 
     @Override
 	public boolean isRuleObjection(Validateable validateable) {
-		
-		Identificacao identificacao = validateable.getIdentificacao();
-		
+
+        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable.getWrapper();
+
+		Identificacao identificacao = wrapper.getIdentificacao();
+
 		return identificacao.getTipoAmbiente() == AMBIENTE.PRODUCAO.getCodigo()
 				&& identificacao.getDataEmissao().before(DATA_MARCO_PRODUCAO);
 	}

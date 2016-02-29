@@ -1,4 +1,4 @@
-package br.com.model;
+package br.com.usage.model;
 
 import br.com.enums.Model;
 import br.com.enums.Version;
