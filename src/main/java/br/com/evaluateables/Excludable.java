@@ -1,7 +1,7 @@
-package br.com.excludable;
+package br.com.evaluateables;
 
 /**
- * Contract to excludable rules validations
+ * Contract to objection rules validations
  * @param <T> Type to be evalueted
  */
 public interface Excludable<T>{

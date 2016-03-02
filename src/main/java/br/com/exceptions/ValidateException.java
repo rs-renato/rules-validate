@@ -1,6 +1,6 @@
 package br.com.exceptions;
 
-import br.com.enums.ValidateableMessages;
+import br.com.messages.ValidateableMessages;
 
 /**
  * Exception used to represent validation troubles

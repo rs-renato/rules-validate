@@ -1,4 +1,4 @@
-package br.com.enums;
+package br.com.messages;
 
 /**
  * Defines all validation message to be showed in validate phase,

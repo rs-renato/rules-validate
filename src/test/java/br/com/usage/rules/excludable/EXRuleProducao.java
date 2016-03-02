@@ -1,10 +1,10 @@
 package br.com.usage.rules.excludable;
 
-import br.com.excludable.Excludable;
+import br.com.evaluateables.Excludable;
 import br.com.usage.model.Identificacao;
 import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.constants.AMBIENTE;
-import br.com.wrapper.Validateable;
+import br.com.evaluateables.Validateable;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

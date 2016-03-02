@@ -3,16 +3,16 @@ package br.com.usage.rules;
 import br.com.annotation.Rule;
 import br.com.enums.Model;
 import br.com.enums.Priority;
-import br.com.enums.ValidateableMessages;
+import br.com.messages.ValidateableMessages;
 import br.com.enums.Version;
-import br.com.excludable.Excludable;
+import br.com.evaluateables.Excludable;
 import br.com.rules.RuleValidation;
 import br.com.usage.message.Messages;
 import br.com.usage.model.Identificacao;
 import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.constants.INDI_IE_DEST;
 import br.com.usage.rules.excludable.EXRuleProducao;
-import br.com.wrapper.Validateable;
+import br.com.evaluateables.Validateable;
 
 @Rule(priority = Priority.HIGH, version = Version.V3_10, modelo = Model.MODELO_55)
 public class RV805 extends RuleValidation {

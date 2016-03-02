@@ -2,14 +2,14 @@ package br.com.usage.rules;
 
 import br.com.annotation.Rule;
 import br.com.enums.Model;
-import br.com.enums.ValidateableMessages;
+import br.com.messages.ValidateableMessages;
 import br.com.enums.Version;
 import br.com.rules.RuleValidation;
 import br.com.usage.message.Messages;
 import br.com.usage.model.Identificacao;
 import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.Produto;
-import br.com.wrapper.Validateable;
+import br.com.evaluateables.Validateable;
 
 @Rule(version = Version.V3_10, modelo = Model.ALL)
 public class RV590 extends RuleValidation {

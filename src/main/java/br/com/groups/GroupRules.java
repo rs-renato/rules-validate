@@ -3,7 +3,7 @@ package br.com.groups;
 import br.com.containner.GroupContainer;
 import br.com.exceptions.ValidateException;
 import br.com.rules.RuleValidation;
-import br.com.wrapper.Validateable;
+import br.com.evaluateables.Validateable;
 
 /**
  * Abstraction class to Group Rules

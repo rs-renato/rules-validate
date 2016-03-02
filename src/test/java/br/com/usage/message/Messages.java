@@ -1,6 +1,6 @@
 package br.com.usage.message;
 
-import br.com.enums.ValidateableMessages;
+import br.com.messages.ValidateableMessages;
 
 public enum Messages implements ValidateableMessages {
 

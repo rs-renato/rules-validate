@@ -2,7 +2,7 @@ package br.com.usage.model;
 
 import br.com.enums.Model;
 import br.com.enums.Version;
-import br.com.wrapper.Validateable;
+import br.com.evaluateables.Validateable;
 
 public class IdentificacaoWrapper implements Validateable {
 

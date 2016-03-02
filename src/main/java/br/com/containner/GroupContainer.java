@@ -7,7 +7,7 @@ import br.com.factory.GroupFactory;
 import br.com.factory.RulesFactory;
 import br.com.groups.GroupRules;
 import br.com.rules.RuleValidation;
-import br.com.wrapper.Validateable;
+import br.com.evaluateables.Validateable;
 import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 

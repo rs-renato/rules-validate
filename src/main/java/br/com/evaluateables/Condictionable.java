@@ -1,4 +1,4 @@
-package br.com.condition;
+package br.com.evaluateables;
 
 /**
  * Contract to condictionable rules validations

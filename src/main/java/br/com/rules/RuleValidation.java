@@ -1,8 +1,8 @@
 package br.com.rules;
 
-import br.com.enums.ValidateableMessages;
+import br.com.evaluateables.Validateable;
+import br.com.messages.ValidateableMessages;
 import br.com.exceptions.ValidateException;
-import br.com.wrapper.Validateable;
 import org.apache.log4j.Logger;
 
 /**

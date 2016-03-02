@@ -1,4 +1,4 @@
-package br.com.wrapper;
+package br.com.evaluateables;
 
 import br.com.enums.Model;
 import br.com.enums.Version;
