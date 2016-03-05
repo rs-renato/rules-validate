@@ -2,11 +2,12 @@ package br.com.usage.model;
 
 import br.com.enums.Model;
 import br.com.enums.Version;
+import br.com.evaluateables.Validateable;
 
 import java.util.Date;
 import java.util.List;
 
-public class Identificacao {
+public class Identificacao implements Validateable{
 
 	private char indIeDest;
 	private int tipoAmbiente;
@@ -65,10 +66,6 @@ public class Identificacao {
 		this.codigoRegimeTributario = codigoRegimeTributario;
 	}
 	
-	public Model getModeloNFe() {
-		return modeloNfe;
-	}
-	
 	public void setModeloNFe(Model modeloNfe) {
 		this.modeloNfe = modeloNfe;
 	}
@@ -77,7 +74,13 @@ public class Identificacao {
 		this.versao = versao;
 	}
 
-    public Version getVersao() {
+    @Override
+    public Version getVersion() {
         return this.versao;
+    }
+
+    @Override
+    public Model getModel() {
+        return modeloNfe;
     }
 }

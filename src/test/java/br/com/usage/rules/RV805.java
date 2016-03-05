@@ -9,19 +9,17 @@ import br.com.evaluateables.Excludable;
 import br.com.rules.RuleValidation;
 import br.com.usage.message.Messages;
 import br.com.usage.model.Identificacao;
-import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.constants.INDI_IE_DEST;
 import br.com.usage.rules.excludable.EXRuleProducao;
-import br.com.evaluateables.Validateable;
 
 @Rule(priority = Priority.HIGH, version = Version.V3_10, modelo = Model.MODELO_55)
-public class RV805 extends RuleValidation {
+public class RV805 extends RuleValidation<Identificacao> {
 	
-	private enum RV805EX implements Excludable<Validateable>{
+	private enum RV805EX implements Excludable<Identificacao>{
 		
 		EXCEPTION_01{
 			@Override
-			public boolean isRuleObjection(Validateable validateable) {
+			public boolean isRuleObjection(Identificacao validateable) {
 				return false;
 			};
 			
@@ -29,40 +27,36 @@ public class RV805 extends RuleValidation {
 		
 		EXCEPTION_02{
 			@Override
-			public boolean isRuleObjection(Validateable validateable) {
+			public boolean isRuleObjection(Identificacao validateable) {
 				return false;
 			}
 		},
 		
 		EXCEPTION_03(new EXRuleProducao()){
 			@Override
-			public boolean isRuleObjection(Validateable validateable) {
-				return this.validateable.isRuleObjection(validateable);
+			public boolean isRuleObjection(Identificacao validateable) {
+				return this.excludable.isRuleObjection(validateable);
 			}
 
 		};
 		
-		protected Excludable<Validateable> validateable;
+		protected Excludable excludable;
 
 		RV805EX() {}
 		
-		RV805EX(Excludable<Validateable> validateable) {
-			this.validateable = validateable;
+		RV805EX(Excludable excludable) {
+			this.excludable = excludable;
 		}
 	}
 	
 	@Override
-	public boolean isSatisfied(Validateable validateable) {
+	public boolean isSatisfied(Identificacao validateable) {
 
-        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable;
-		
-		Identificacao identificacao = wrapper.getIdentificacao();
-		
-		return identificacao.getIndIEDest() == INDI_IE_DEST.CONTRIB_ISENTO_ICMS.getCodigo();
+		return validateable.getIndIEDest() == INDI_IE_DEST.CONTRIB_ISENTO_ICMS.getCodigo();
 	}
 	
 	@Override
-	public boolean hasObjection(Validateable validateable) {
+	public boolean hasObjection(Identificacao validateable) {
 		
 		for (RV805EX ex : RV805EX.values()) {
 			if (ex.isRuleObjection(validateable)) {

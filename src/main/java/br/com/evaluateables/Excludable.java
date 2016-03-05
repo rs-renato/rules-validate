@@ -4,7 +4,7 @@ package br.com.evaluateables;
  * Contract to objection rules validations
  * @param <T> Type to be evalueted
  */
-public interface Excludable<T>{
+public interface Excludable<T extends Validateable>{
 
     /**
      * Check if has any objection to type {@link T}

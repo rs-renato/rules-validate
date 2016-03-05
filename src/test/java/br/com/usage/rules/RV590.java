@@ -12,21 +12,19 @@ import br.com.usage.model.Produto;
 import br.com.evaluateables.Validateable;
 
 @Rule(version = Version.V3_10, modelo = Model.ALL)
-public class RV590 extends RuleValidation {
+public class RV590 extends RuleValidation<IdentificacaoWrapper> {
 
 	@Override
-	public boolean isSatisfied(Validateable validateable) {
+	public boolean isSatisfied(IdentificacaoWrapper validateable) {
 
-        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable;
-
-        Identificacao identificacao = wrapper.getIdentificacao();
-		Produto produto = wrapper.getProduto();
+        Identificacao identificacao = validateable.getIdentificacao();
+		Produto produto = validateable.getProduto();
 		
 		return identificacao.getCodigoRegimeTributario() == '1' && produto.getCst() != null;
 	}
 
 	@Override
-	public boolean hasObjection(Validateable validateable) {
+	public boolean hasObjection(IdentificacaoWrapper validateable) {
 		return false;
 	}
 

@@ -10,7 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class EXRuleProducao implements Excludable<Validateable>{
+public class EXRuleProducao implements Excludable<Identificacao>{
 	
 	private static Date DATA_MARCO_PRODUCAO;
 	
@@ -22,13 +22,9 @@ public class EXRuleProducao implements Excludable<Validateable>{
 	}
 
     @Override
-	public boolean isRuleObjection(Validateable validateable) {
+	public boolean isRuleObjection(Identificacao validateable) {
 
-        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable;
-
-		Identificacao identificacao = wrapper.getIdentificacao();
-
-		return identificacao.getTipoAmbiente() == AMBIENTE.PRODUCAO.getCodigo()
-				&& identificacao.getDataEmissao().before(DATA_MARCO_PRODUCAO);
+		return validateable.getTipoAmbiente() == AMBIENTE.PRODUCAO.getCodigo()
+				&& validateable.getDataEmissao().before(DATA_MARCO_PRODUCAO);
 	}
 }

@@ -32,12 +32,12 @@ public class IdentificacaoWrapper implements Validateable {
 
     @Override
     public Model getModel() {
-        return identificacao.getModeloNFe();
+        return identificacao.getModel();
     }
 
     @Override
     public Version getVersion() {
-        return identificacao.getVersao();
+        return identificacao.getVersion();
     }
 
 }
