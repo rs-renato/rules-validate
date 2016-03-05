@@ -13,7 +13,7 @@ import java.util.Set;
  */
 class ModelContainer implements IContainer<Model> {
 
-    private Map<Model, Set<RuleValidation>> rules = new HashMap<Model, Set<RuleValidation>>();
+    private final Map<Model, Set<RuleValidation>> rules = new HashMap<Model, Set<RuleValidation>>();
 
     public ModelContainer() {
 

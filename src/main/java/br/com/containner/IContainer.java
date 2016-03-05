@@ -8,7 +8,7 @@ import java.util.Set;
  * Contract to containers. This container must be
  * parametrized by specific type
  */
-public interface IContainer<T> {
+interface IContainer<T> {
     /**
      * Adds a {@link RuleValidation} to container
      * @param ruleValidation rule validation

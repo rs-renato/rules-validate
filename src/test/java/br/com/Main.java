@@ -3,12 +3,12 @@ package br.com;
 import br.com.containner.GroupContainer;
 import br.com.enums.Model;
 import br.com.enums.Version;
+import br.com.evaluateables.Validateable;
 import br.com.exceptions.ValidateException;
 import br.com.groups.GroupRules;
 import br.com.usage.model.Identificacao;
 import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.Produto;
-import br.com.evaluateables.Validateable;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

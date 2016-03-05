@@ -1,21 +1,21 @@
 package br.com.groups;
 
 import br.com.containner.GroupContainer;
+import br.com.evaluateables.Validateable;
 import br.com.exceptions.ValidateException;
 import br.com.rules.RuleValidation;
-import br.com.evaluateables.Validateable;
 
 /**
  * Abstraction class to Group Rules
  */
-public abstract class GroupRules {
+public abstract class GroupRules<T extends Validateable> {
 
     /**
      * Validate associated rules to this group of rules
      * @param validateable a validation type to be evaluated
      * @throws ValidateException throws validation expeception if any rule wasn't satisfied
      */
-    protected void validateRules(Validateable validateable) throws ValidateException {
+    protected void validateRules(T validateable) throws ValidateException {
 
         GroupContainer groupContainer = GroupContainer.getInstance();
 
@@ -30,6 +30,6 @@ public abstract class GroupRules {
      * @param validateable a validation type to be evaluated
      * @throws ValidateException validation expeception if any rule wasn't satisfied
      */
-	public abstract void execute(Validateable validateable) throws ValidateException;
+	public abstract void execute(T validateable) throws ValidateException;
 
 }

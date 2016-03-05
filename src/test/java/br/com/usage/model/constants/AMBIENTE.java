@@ -8,7 +8,7 @@ public enum AMBIENTE {
 	
 	private int tipoAmbiente;
 	
-	private AMBIENTE(int tipoAmbiente) {
+	AMBIENTE(int tipoAmbiente) {
 		this.tipoAmbiente = tipoAmbiente;
 	}
 	

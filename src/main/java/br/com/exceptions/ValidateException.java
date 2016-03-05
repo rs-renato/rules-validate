@@ -9,7 +9,7 @@ public class ValidateException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 	
-	private ValidateableMessages mensagemNFe;
+	private final ValidateableMessages mensagemNFe;
 	
 	public ValidateException(ValidateableMessages mensagenNfe) {
 		this.mensagemNFe = mensagenNfe;

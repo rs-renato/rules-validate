@@ -9,7 +9,7 @@ public enum Model { //FIXME change to interface
 	MODELO_65("65"),
 	ALL("mALL");
 
-	private String codigo;
+	private final String codigo;
 	
 	Model(String codigo) {
 		this.codigo = codigo;

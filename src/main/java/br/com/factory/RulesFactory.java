@@ -12,8 +12,8 @@ import java.util.Map;
  */
 public class RulesFactory {
 
-    private final Logger logger = Logger.getLogger(RulesFactory.class);
-    private static  RulesFactory rulesFactory = new RulesFactory();
+    private static final Logger logger = Logger.getLogger(RulesFactory.class);
+    private static final RulesFactory rulesFactory = new RulesFactory();
 
     private static final Map<Class<? extends RuleValidation>, RuleValidation> rulesMap = new HashMap<Class<? extends RuleValidation>, RuleValidation>();
 

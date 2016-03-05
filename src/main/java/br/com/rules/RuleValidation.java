@@ -1,14 +1,14 @@
 package br.com.rules;
 
 import br.com.evaluateables.Validateable;
-import br.com.messages.ValidateableMessages;
 import br.com.exceptions.ValidateException;
+import br.com.messages.ValidateableMessages;
 import org.apache.log4j.Logger;
 
 /**
  * Abstraction class to rules validation
  */
-public abstract class RuleValidation<T>{
+public abstract class RuleValidation<T extends Validateable>{
 
     private static final Logger logger = Logger.getLogger(RuleValidation.class);
 

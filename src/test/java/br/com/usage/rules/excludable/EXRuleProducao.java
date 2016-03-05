@@ -2,9 +2,7 @@ package br.com.usage.rules.excludable;
 
 import br.com.evaluateables.Excludable;
 import br.com.usage.model.Identificacao;
-import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.constants.AMBIENTE;
-import br.com.evaluateables.Validateable;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,7 +16,9 @@ public class EXRuleProducao implements Excludable<Identificacao>{
 		
 		try {
 			DATA_MARCO_PRODUCAO = new SimpleDateFormat("yyyy/MM/dd").parse("2016/01/01");
-		} catch (ParseException e) {}
+		} catch (ParseException e) {
+            e.printStackTrace();
+        }
 	}
 
     @Override

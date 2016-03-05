@@ -9,9 +9,9 @@ public enum Version{//FIXME change to interface
     V3_10("3.10"),
     ALL("vALL");
 
-    private String version;
+    private final String version;
 
-    private Version(String version) {
+    Version(String version) {
         this.version = version;
     }
 

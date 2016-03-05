@@ -1,6 +1,5 @@
 package br.com.containner;
 
-import br.com.enums.Model;
 import br.com.enums.Version;
 import br.com.rules.RuleValidation;
 
@@ -14,7 +13,7 @@ import java.util.Set;
  */
 class VersionContainer implements IContainer<Version> {
 
-    private Map<Version, Set<RuleValidation>> rules = new HashMap<Version, Set<RuleValidation>>();
+    private final Map<Version, Set<RuleValidation>> rules = new HashMap<Version, Set<RuleValidation>>();
 
     public VersionContainer() {
 
@@ -33,9 +32,9 @@ class VersionContainer implements IContainer<Version> {
             case ALL:{
 
                 //adds the rule to all versions
-                for (Model model : Model.values()){
-                    if (model.equals(Model.ALL)) continue;
-                    rules.get(model).add(ruleValidation);
+                for (Version version : Version.values()){
+                    if (version.equals(Version.ALL)) continue;
+                    rules.get(version).add(ruleValidation);
                 }
 
                 break;

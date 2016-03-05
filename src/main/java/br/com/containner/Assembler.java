@@ -13,12 +13,12 @@ import java.util.Set;
  * considering their {@link Model} and {@link Version}. This assembler
  * wrapps a {@link VersionContainer} and {@link ModelContainer} instances.
  */
-public class Assembler {
+class Assembler {
 
-    private VersionContainer versionContainner = new VersionContainer();
-    private ModelContainer modelContainner = new ModelContainer();
+    private final VersionContainer versionContainner = new VersionContainer();
+    private final ModelContainer modelContainner = new ModelContainer();
 
-    private Set<RuleValidation> allRules = new HashSet<RuleValidation>();
+    private final Set<RuleValidation> allRules = new HashSet<RuleValidation>();
 
     /**
      * Adds a {@link RuleValidation} to this assembler

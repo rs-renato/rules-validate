@@ -8,7 +8,7 @@ public enum INDI_IE_DEST{
 	
 	private char codigo;
 	
-	private INDI_IE_DEST(char codigo) {
+	INDI_IE_DEST(char codigo) {
 		this.codigo = codigo;
 	}
 	

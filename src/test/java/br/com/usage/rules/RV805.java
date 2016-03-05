@@ -3,9 +3,9 @@ package br.com.usage.rules;
 import br.com.annotation.Rule;
 import br.com.enums.Model;
 import br.com.enums.Priority;
-import br.com.messages.ValidateableMessages;
 import br.com.enums.Version;
 import br.com.evaluateables.Excludable;
+import br.com.messages.ValidateableMessages;
 import br.com.rules.RuleValidation;
 import br.com.usage.message.Messages;
 import br.com.usage.model.Identificacao;
@@ -21,9 +21,9 @@ public class RV805 extends RuleValidation<Identificacao> {
 			@Override
 			public boolean isRuleObjection(Identificacao validateable) {
 				return false;
-			};
-			
-		},
+			}
+
+        },
 		
 		EXCEPTION_02{
 			@Override

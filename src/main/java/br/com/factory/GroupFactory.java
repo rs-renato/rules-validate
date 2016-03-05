@@ -13,9 +13,9 @@ import java.util.Map;
  */
 public class GroupFactory {
 
-    private final Logger logger = Logger.getLogger(GroupFactory.class);
+    private static final Logger logger = Logger.getLogger(GroupFactory.class);
     private static final Map<Class<? extends GroupRules>, GroupRules> rulesGroup = new HashMap<Class<? extends GroupRules>, GroupRules>();
-    private static  GroupFactory groupFactory = new GroupFactory();
+    private static final GroupFactory groupFactory = new GroupFactory();
 
     private GroupFactory() {
         logger.info("Initializing GroupFactory..");
