@@ -2,14 +2,13 @@ package br.com.evaluateables;
 
 /**
  * Contract to objection rules validations
- * @param <T> Type to be evalueted
  */
-public interface Excludable<T extends Validateable>{
+public interface Excludable{
 
     /**
-     * Check if has any objection to type {@link T}
-     * @param t type
+     * Check if has any objection to type {@link Validateable}
+     * @param validateable type
      * @return true if objection is satisfied on type
      */
-	boolean isRuleObjection(T t);
+	boolean isRuleObjection(Validateable validateable);
 }

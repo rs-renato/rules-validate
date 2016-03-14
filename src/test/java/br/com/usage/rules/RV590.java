@@ -2,7 +2,9 @@ package br.com.usage.rules;
 
 import br.com.annotation.Rule;
 import br.com.enums.Model;
+import br.com.enums.Priority;
 import br.com.enums.Version;
+import br.com.evaluateables.Validateable;
 import br.com.messages.ValidateableMessages;
 import br.com.rules.RuleValidation;
 import br.com.usage.message.Messages;
@@ -10,20 +12,22 @@ import br.com.usage.model.Identificacao;
 import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.Produto;
 
-@Rule(version = Version.V3_10, modelo = Model.ALL)
-public class RV590 extends RuleValidation<IdentificacaoWrapper> {
+@Rule(version = Version.V3_10, modelo = Model.ALL,priority = Priority.HIGH)
+public class RV590 extends RuleValidation {
 
 	@Override
-	public boolean isSatisfied(IdentificacaoWrapper validateable) {
+	public boolean isSatisfied(Validateable validateable) {
 
-        Identificacao identificacao = validateable.getIdentificacao();
-		Produto produto = validateable.getProduto();
+        IdentificacaoWrapper wrapper = (IdentificacaoWrapper) validateable;
+
+        Identificacao identificacao = wrapper.getIdentificacao();
+		Produto produto = wrapper.getProduto();
 		
 		return identificacao.getCodigoRegimeTributario() == '1' && produto.getCst() != null;
 	}
 
 	@Override
-	public boolean hasObjection(IdentificacaoWrapper validateable) {
+	public boolean hasObjection(Validateable validateable) {
 		return false;
 	}
 

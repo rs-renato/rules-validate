@@ -1,6 +1,7 @@
 package br.com.containner;
 
 import br.com.annotation.Group;
+import br.com.annotation.Rule;
 import br.com.enums.Model;
 import br.com.enums.Version;
 import br.com.evaluateables.Validateable;
@@ -19,9 +20,9 @@ import java.util.*;
  */
 public class GroupContainer implements IContainer<GroupRules> {
 
+    private static final Logger logger = Logger.getLogger(GroupContainer.class);
     private static final Map<GroupRules, Assembler> groups = new HashMap<GroupRules, Assembler>();
     private static final GroupContainer GROUP_CONTAINER = new GroupContainer();
-    private static final Logger logger = Logger.getLogger(GroupContainer.class);
 
     private static final String GROUP_PACKAGE = "br.com.usage.group"; //FIXME change package convention; load from property
 
@@ -54,6 +55,9 @@ public class GroupContainer implements IContainer<GroupRules> {
                 addRule(ruleValidation, groupRules);
             }
         }
+
+        applyPriority(GroupFactory.getInstance().getGroups());
+        applyPriority(RulesFactory.getInstance().getRules());
     }
 
     /**
@@ -98,5 +102,33 @@ public class GroupContainer implements IContainer<GroupRules> {
      */
     public Collection<GroupRules> getGroups(){
         return GroupFactory.getInstance().getGroups();
+    }
+
+    private <T>void applyPriority(Collection<T> collection){
+
+        Collections.sort(new ArrayList(collection), new Comparator<T>() {
+
+            @Override
+            public int compare(T one, T other) {
+                return getPriority(one.getClass()).compareTo(getPriority(other.getClass()));
+            }
+        });
+    }
+
+    /**
+     * Get {@link br.com.enums.Priority} from type
+     * @param type type with priority
+     * @param <T> type
+     * @return priority or null if priority not found
+     */
+    private <T> Integer getPriority(Class<? extends T> type){
+
+        if (type.getAnnotation(Rule.class) != null){
+            return type.getAnnotation(Rule.class).priority().getValue();
+        }else if(type.getAnnotation(Group.class) != null){
+            return type.getAnnotation(Group.class).priority().getValue();
+        }
+
+        return null;
     }
 }

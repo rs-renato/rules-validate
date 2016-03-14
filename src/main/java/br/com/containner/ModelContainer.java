@@ -2,17 +2,20 @@ package br.com.containner;
 
 import br.com.enums.Model;
 import br.com.rules.RuleValidation;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+
 /**
  * A container of models represented by {@link Model}
  */
 class ModelContainer implements IContainer<Model> {
 
+    private static final Logger logger = Logger.getLogger(ModelContainer.class);
     private final Map<Model, Set<RuleValidation>> rules = new HashMap<Model, Set<RuleValidation>>();
 
     public ModelContainer() {
@@ -22,6 +25,8 @@ class ModelContainer implements IContainer<Model> {
             if (model.equals(Model.ALL)) continue;
             rules.put(model, new HashSet<RuleValidation>());
         }
+
+        logger.debug("Rules by model' map loaded.. ");
     }
 
     @Override

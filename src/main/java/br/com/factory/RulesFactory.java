@@ -18,7 +18,7 @@ public class RulesFactory {
     private static final Map<Class<? extends RuleValidation>, RuleValidation> rulesMap = new HashMap<Class<? extends RuleValidation>, RuleValidation>();
 
     private RulesFactory() {
-        logger.info("Initializing RulesFactory..");
+        logger.debug("Initializing RulesFactory..");
     }
 
     public static RulesFactory getInstance(){

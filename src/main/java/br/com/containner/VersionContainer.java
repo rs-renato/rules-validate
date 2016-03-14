@@ -2,6 +2,7 @@ package br.com.containner;
 
 import br.com.enums.Version;
 import br.com.rules.RuleValidation;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import java.util.Set;
  */
 class VersionContainer implements IContainer<Version> {
 
+    private static final Logger logger = Logger.getLogger(VersionContainer.class);
     private final Map<Version, Set<RuleValidation>> rules = new HashMap<Version, Set<RuleValidation>>();
 
     public VersionContainer() {
@@ -22,6 +24,8 @@ class VersionContainer implements IContainer<Version> {
             if (version.equals(Version.ALL)) continue;
             rules.put(version, new HashSet<RuleValidation>());
         }
+
+        logger.debug("Rules by version' map loaded.. ");
     }
 
     @Override

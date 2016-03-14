@@ -18,7 +18,7 @@ public class GroupFactory {
     private static final GroupFactory groupFactory = new GroupFactory();
 
     private GroupFactory() {
-        logger.info("Initializing GroupFactory..");
+        logger.debug("Initializing GroupFactory..");
     }
 
     public static GroupFactory getInstance(){

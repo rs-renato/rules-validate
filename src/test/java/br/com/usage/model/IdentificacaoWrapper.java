@@ -2,9 +2,8 @@ package br.com.usage.model;
 
 import br.com.enums.Model;
 import br.com.enums.Version;
-import br.com.evaluateables.Validateable;
 
-public class IdentificacaoWrapper implements Validateable {
+public class IdentificacaoWrapper implements Wrapper{
 
 	private Identificacao identificacao;
 	private Produto produto;
@@ -29,6 +28,7 @@ public class IdentificacaoWrapper implements Validateable {
 	public Identificacao getIdentificacao() {
 		return this.identificacao;
 	}
+
 
     @Override
     public Model getModel() {

@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 /**
  * Abstraction class to rules validation
  */
-public abstract class RuleValidation<T extends Validateable>{
+public abstract class RuleValidation{
 
     private static final Logger logger = Logger.getLogger(RuleValidation.class);
 
@@ -19,7 +19,7 @@ public abstract class RuleValidation<T extends Validateable>{
      * @param validateable a validation type to be evaluated
      * @throws ValidateException throws validation expeception if any rule wasn't satisfied
      */
-	public void validate(T validateable) throws ValidateException {
+	public void validate(Validateable validateable) throws ValidateException {
 
 		if (isSatisfied(validateable) && !hasObjection(validateable)) {
 
@@ -40,7 +40,7 @@ public abstract class RuleValidation<T extends Validateable>{
      * @param validateable a validation type to be evaluated
      * @return true if the rule is satisfied
      */
-	public abstract boolean isSatisfied(T validateable);
+	public abstract boolean isSatisfied(Validateable validateable);
 
 
     /**
@@ -48,7 +48,7 @@ public abstract class RuleValidation<T extends Validateable>{
      * @param validateable a validation type to be evaluated
      * @return true if the rule has any objection
      */
-	public abstract boolean hasObjection(T validateable);
+	public abstract boolean hasObjection(Validateable validateable);
 
 
     /*@Override

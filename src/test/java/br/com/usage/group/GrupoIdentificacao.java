@@ -9,7 +9,7 @@ import br.com.usage.rules.RV590;
 import br.com.usage.rules.RV805;
 
 @Group(rules={RV590.class, RV805.class}, priority = Priority.HIGH)
-public class GrupoIdentificacao extends GroupRules<Validateable> {
+public class GrupoIdentificacao extends GroupRules {
 
 	@Override
 	public void execute(Validateable validateable) throws ValidateException {

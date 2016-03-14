@@ -1,14 +1,15 @@
 package br.com.usage.rules.excludable;
 
 import br.com.evaluateables.Excludable;
-import br.com.usage.model.Identificacao;
+import br.com.evaluateables.Validateable;
+import br.com.usage.model.IdentificacaoWrapper;
 import br.com.usage.model.constants.AMBIENTE;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class EXRuleProducao implements Excludable<Identificacao>{
+public class EXRuleProducao implements Excludable{
 	
 	private static Date DATA_MARCO_PRODUCAO;
 	
@@ -22,9 +23,9 @@ public class EXRuleProducao implements Excludable<Identificacao>{
 	}
 
     @Override
-	public boolean isRuleObjection(Identificacao validateable) {
+	public boolean isRuleObjection(Validateable validateable) {
 
-		return validateable.getTipoAmbiente() == AMBIENTE.PRODUCAO.getCodigo()
-				&& validateable.getDataEmissao().before(DATA_MARCO_PRODUCAO);
+		return ((IdentificacaoWrapper)validateable).getIdentificacao().getTipoAmbiente() == AMBIENTE.PRODUCAO.getCodigo()
+				&& ((IdentificacaoWrapper)validateable).getIdentificacao().getDataEmissao().before(DATA_MARCO_PRODUCAO);
 	}
 }
